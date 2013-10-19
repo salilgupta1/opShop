@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 //require_once($_SERVER['DOCUMENT_ROOT'] . '/model/datastore/MySql/config.php');
 require_once ('config.php');
 class MySql
@@ -12,7 +14,7 @@ class MySql
             $this->setDB(); //by default you will have to go the opshop db
         }
 
-        protected function setDB($db) {
+        protected function setDB($db=null) {
             $this->dbHost   = OPSHOP_DB_HOST;
             $this->dbUser   = OPSHOP_DB_USER;
             $this->dbPwd    = OPSHOP_DB_PWD;
@@ -143,5 +145,3 @@ class MySql
         }*/
 
 }
-
-?>
