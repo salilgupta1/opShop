@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 require_once('MySql/MySql.php');
 
 //require_once($_SERVER['DOCUMENT_ROOT']."/include/session.php");
@@ -25,12 +27,12 @@ class DataStore
 			return false;
 	}
 	//update operations
-	public function set($query);
+	public function set($query)
 	{
 		return $this->db->update($query);
 	}
 	//read/get operations
-	public function get($query);
+	public function get($query)
 	{
 		return $this->db->read($query);
 	}
@@ -159,5 +161,3 @@ class DataStore
 		}
 	} */
 }
-
-?>
