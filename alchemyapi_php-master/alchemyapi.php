@@ -1,15 +1,20 @@
 <?php
+ini_set('display_errors',1);
+error_reporting(E_ALL);
+
+require_once('api_key.php');
 
 class AlchemyAPI {
-	
+
 	private $_api_key;
 	private $_ENDPOINTS;
     private $_BASE_URL = 'http://access.alchemyapi.com/calls';
 
 	public function AlchemyAPI() {
 		//Load the API Key from api_key.txt
-		$key = trim(file_get_contents("api_key.txt"));
-	
+/*
+		$key = file_get_contents("api_key.txt");
+		echo $key;
 		if (!$key) {
 			//Keys should not be blank
 			echo 'The api_key.txt file appears to be blank, please copy/paste your API key in the file: api_key.txt', PHP_EOL;
@@ -23,9 +28,9 @@ class AlchemyAPI {
 			//Keys should be 40 characters long
 			echo 'It appears that the key in api_key.txt is invalid. Please make sure the file only includes the API key, and it is the correct one.', PHP_EOL;
 			exit(1);
-		}
+		}*/
 
-		$this->_api_key = $key;
+		$this->_api_key = '2218dba9d181d8e3874695743a35aabfcb4c0025';
 
 
 		//Initialize the API Endpoints
@@ -153,7 +158,7 @@ class AlchemyAPI {
 		$options[$flavor] = rawurlencode($data);
 		return $this->analyze($this->_ENDPOINTS['category'][$flavor], $options);
 	}
-	
+
 
 	public function relations($flavor, $data, $options) {
 		//Make sure this request supports the flavor
@@ -166,7 +171,7 @@ class AlchemyAPI {
 		return $this->analyze($this->_ENDPOINTS['relations'][$flavor], $options);
 	}
 
-	
+
 	public function language($flavor, $data, $options) {
 		//Make sure this request supports the flavor
 		if (!array_key_exists($flavor, $this->_ENDPOINTS['language'])) {
@@ -178,7 +183,7 @@ class AlchemyAPI {
 		return $this->analyze($this->_ENDPOINTS['language'][$flavor], $options);
 	}
 
-	
+
 	public function text_clean($flavor, $data, $options) {
 		//Make sure this request supports the flavor
 		if (!array_key_exists($flavor, $this->_ENDPOINTS['text_clean'])) {
@@ -250,10 +255,10 @@ class AlchemyAPI {
 		foreach($params as $key => $value) {
 			$url = $url . '&' . $key . '=' . $value;
 		}
-		
+
 		//Create the HTTP header
 		$header = array('http' => array('method' => 'POST', 'Content-type'=> 'application/x-www-form-urlencoded'));
-		
+
 		//Fire off the HTTP Request
 		try {
 			$fp = @fopen($url, 'rb',false, stream_context_create($header));
