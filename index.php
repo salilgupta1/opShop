@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors',1);
 error_reporting(E_ALL);
-require_once($_SERVER['DOCUMENT_ROOT'].'/model/database/tables/CongressDB.php');
+//require_once($_SERVER['DOCUMENT_ROOT'].'/model/database/tables/CongressDB.php');
 ?>
 <!DOCTYPE HTML>
 <html lang='en'>
@@ -15,9 +15,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/model/database/tables/CongressDB.php');
 
 	<script src = '/views/javascript/bootstrap.min.js'></script>
 	<script src = '/views/javascript/jquery/jquery-1.10.2.js'></script>
-	<script src = '/views/javascript/alchemy.js'></script>
+	<script src = '/views/javascript/OpShop.js'></script>
 	<script>
-		Alchemy.init();
+		//Alchemy.init();
 	</script>
 
 	<link type = 'text/css' rel = 'stylesheet' href = '/views/css/bootstrap.min.css'/>
@@ -57,7 +57,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/model/database/tables/CongressDB.php');
 
       <div class="starter-template">
         <h1>OpShop</h1>
-        <form>
+        <form method = 'get' action = '/alchemy.php'>
         	<div class = 'form-group'>
         		<input type="url" class="form-control" id = 'articleLink'placeholder="URL">
         	</div>
