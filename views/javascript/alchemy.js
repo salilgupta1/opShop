@@ -1,3 +1,5 @@
+//IGNORE THIS IS A TEST 
+
 var Alchemy = (function($){
 
 	sendArticleToAlchemy = function(link)
