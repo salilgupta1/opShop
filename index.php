@@ -12,12 +12,13 @@ error_reporting(E_ALL);
     <meta name="author" content="">
 
     <title>OpShop</title>
-
+  <script src = '/views/javascript/jquery/jquery.js'></script>
 	<script src = '/views/javascript/bootstrap.min.js'></script>
-	<script src = '/views/javascript/jquery/jquery-1.10.2.js'></script>
 	<script src = '/views/javascript/OpShop.js'></script>
 	<script>
-		//Alchemy.init();
+  $(document).ready(function(){
+    OpShop.init();
+  });
 	</script>
 
 	<link type = 'text/css' rel = 'stylesheet' href = '/views/css/bootstrap.min.css'/>
@@ -54,17 +55,37 @@ error_reporting(E_ALL);
     </div>
 
     <div class="container">
-
       <div class="starter-template">
         <h1>OpShop</h1>
-        <form method = 'get' action = '/alchemy.php'>
+        <form>
         	<div class = 'form-group'>
-        		<input type="url" class="form-control" id = 'articleLink'placeholder="URL">
+        		<input type="url" class="form-control" id ='articleLink' placeholder="URL">
         	</div>
         	<button type="submit" id = 'submit' class="btn btn-default">Submit</button>
         </form>
+        <div class = 'basic-info'>
+          <div class = 'title'>
+            <h2>Title</h2>
+            <div></div>
+          </div>
+          <div class = 'author'>
+            <h2>Author</h2>
+            <div></div>
+          </div>
+          <div class = 'keywords'>
+            <h2>Keywords</h2>
+            <div></div>
+          </div>
+          <div class = 'concepts'>
+            <h2>Concepts</h2>
+            <div></div>
+          </div>
+          <div class = 'entities'>
+            <h2>People</h2>
+            <div></div>
+          </div>
+        </div>
       </div>
-
     </div><!-- /.container -->
 
   </body>
