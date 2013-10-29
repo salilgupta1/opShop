@@ -1,9 +1,9 @@
 <?php
 ini_set('display_errors',1);
 error_reporting(E_ALL);
-require_once('controllers/TwitterApiController.php');
+//require_once('controllers/TwitterApiController.php');
 require_once('controllers/AlchemyApiController.php');
-require_once('controllers/CongressDBController.php');
+//require_once('controllers/CongressDBController.php');
 
 $articleLink = isset($_GET['link'])? $_GET['link']: die('error');
 
