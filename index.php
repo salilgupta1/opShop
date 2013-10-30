@@ -35,7 +35,7 @@ error_reporting(E_ALL);
 </head>
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <!--div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -51,12 +51,12 @@ error_reporting(E_ALL);
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
-      </div>
-    </div>
+      <!--/div>
+    </div-->
 
     <div class="container">
       <div class="starter-template">
-        <h1>OpShop</h1>
+        <img src = '/assets/opShopLogo.jpg' width="300" height="200"></img>
         <form>
         	<div class = 'form-group'>
         		<input type="url" class="form-control" id ='articleLink' placeholder="URL">
