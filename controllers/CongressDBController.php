@@ -27,5 +27,5 @@ class CongressDBController {
 	}*/
 
 
-	public function findCongressPeopleInDB()//Alex build your function for choosing people in here. you can change the name
+	public function findCongressPeopleInDB(){}//Alex build your function for choosing people in here. you can change the name
 }
