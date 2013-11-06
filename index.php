@@ -72,22 +72,22 @@ error_reporting(E_ALL);
             <h2>Title</h2>
             <div></div>
           </div>
-          <div class = 'author'>
+          <!--div class = 'author'>
             <h2>Author</h2>
             <div></div>
-          </div>
+          </div-->
           <div class = 'keywords'>
             <h2>Keywords</h2>
             <div></div>
           </div>
-          <div class = 'concepts'>
+          <!--div class = 'concepts'>
             <h2>Concepts</h2>
             <div></div>
           </div>
           <div class = 'entities'>
             <h2>People</h2>
             <div></div>
-          </div>
+          </div-->
         </div>
       </div>
     </div><!-- /.container -->
