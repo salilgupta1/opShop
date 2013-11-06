@@ -6,8 +6,15 @@ error_reporting(E_ALL);
 | Field        		| Type         | Null | Key | Default | Extra            |
 +-------------------+--------------+------+-----+---------+------------------+
 | pid           	| int(11)      | NO   | PRI | NOT NULL| auto_increment   |
-| name              | varchar(16)  | NO   |     | NOT NULL|                  |
-| update			| Timestamp    | NO	  |     | NOT NULL|	Current_timestamp|
+| first_name        | varchar(16)  | NO   |     | NOT NULL|					 |
+| last_name 		| varchar(16)  | NO   | 	| NOT NULL| 				 |
+| rating            | varchar(16)  | NO   |     | NOT NULL|                  |
+| party
+| special
+| state
+| twitter_handle
+| image_url
+| position
 +-------------------+--------------+------+-----+---------+------------------+
 */
 require_once ($_SERVER['DOCUMENT_ROOT'].'/model/datastore/DataStore.php');
@@ -17,7 +24,15 @@ class CongressDB{
 
 	const T_name 						= 'congress_db';
 	const F_pid 						= 'pid';
-	const F_update						= 'update';
+	const F_fName						= 'first_name';
+	const F_lName 						= 'last_name';
+	const F_rating						= 'rating';
+	const F_party						= 'party';
+	const F_special						= 'special';
+	const F_state 						= 'state';
+	const F_twitter_handle				= 'twitter_handle';
+	const F_image_url					= 'image_url';
+	const F_position					= 'position';
 	//cons of all the fields
 
 	function __construct(){
@@ -29,6 +44,21 @@ class CongressDB{
 		$query = 'select * from '.self::T_name." order by ".self::F_pid." DESC";
 		return $this->datastore->get($query);
 	}
+
+	public function getCongressMenByLastNames($lastNames)
+	{
+		$query = 'select '.self::F_fName.','.
+						   self::F_lName.','.
+						   self::F_rating.','.
+						   self::F_party.','.
+						   self::F_state.' from '.
+						   self::T_name.' where '.self::F_lName.' in ('.$lastNames.')';
+		return $this->datastore->get($query);
+	}
+	/*public function getOpposingCongressMen()
+	{
+
+	}*/
 	//adding a hive job info to the Shmoop DB
 	/*function addHiveQuery($queryName,$queryOwner,$queryDescription,$outputSchema,$queryUUID,$path,$queryStatus){
 		$query = "insert into ".self::T_name."(".
