@@ -5,7 +5,7 @@ require_once('controllers/BingSearchController.php');
 require_once('controllers/AlchemyApiController.php');
 require_once('controllers/CongressDBController.php');
 
-$articleLink = isset($_GET['link'])? $_GET['link']: die('error');//"http://www.deseretnews.com/article/865589797/Mitt-Romney-goes-after-tea-party-Obamas-fundamental-dishonesty-about-Obamacare.html";//die('error');
+$articleLink = isset($_GET['link'])? $_GET['link']:die('error'); //"http://www.deseretnews.com/article/865589797/Mitt-Romney-goes-after-tea-party-Obamas-fundamental-dishonesty-about-Obamacare.html";//die('error');
 
 $alchemyController = new AlchemyApiController($articleLink);
 $congressDBController = new CongressDBController();
