@@ -44,9 +44,9 @@ class AlchemyApiController {
 		// so which keywords do we want... i think it should be the ones that are bigger than .9 or something in relevancez
 		foreach($keywords as $keyword)
 		{
-			if($keyword['relevance']>0.82)
+			if($keyword['relevance']>0.75)
 			{
-				array_push($finalKeyWords,array('text'=>$keyword['text'], /*'relevance'=>$keyword['relevance']*/));
+				array_push($finalKeyWords,array('text'=>$keyword['text'] /*'relevance'=>$keyword['relevance']*/));
 			}
 		}
 		return $finalKeyWords;
