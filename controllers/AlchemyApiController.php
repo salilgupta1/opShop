@@ -13,26 +13,29 @@ class AlchemyApiController {
 		$this->link = $articleLink;
 		$this->alchemyapi = new AlchemyAPI();
 	}
+
+	//use this function later
 	public function getEntities(){
 		//retrieve persons, and quotes associated with that person
 		$response = $this->alchemyapi->entities('url',$this->link,array('quotations'=>1));
 		$entities = $response['entities'];
-		//print_r($entities);
-		//die();
 		$persons = array();
 		foreach($entities as $entity)
 		{
+			//do we need the quotations or not? i don't think so but i might be wrong
 			if($entity['type']==='Person')
 			{
 				if(isset($entity['quotations'])){
 					array_push($persons,array('name'=>$entity['text'],'quotations'=>$entity['quotations']));
 				}
 				else
-					array_push($persons,array('name'=>$entity['text']));
+					//array_push($persons,array('name'=>$entity['text']));
+					array_push($persons,$entity['text']);
 			}
 		}
 		return $persons;
 	}
+
 	public function getKeyWords(){
 		//retrieve keywords
 		$response = $this->alchemyapi->keywords('url',$this->link,null);
@@ -41,25 +44,23 @@ class AlchemyApiController {
 		// so which keywords do we want... i think it should be the ones that are bigger than .9 or something in relevancez
 		foreach($keywords as $keyword)
 		{
-			if($keyword['relevance']>0.6)
+			if($keyword['relevance']>0.75)
 			{
-				array_push($finalKeyWords,array('text'=>$keyword['text'], 'relevance'=>$keyword['relevance']));
+				array_push($finalKeyWords,array('text'=>$keyword['text'] /*'relevance'=>$keyword['relevance']*/));
 			}
 		}
 		return $finalKeyWords;
 	}
-	public function getConcept(){
+/*	public function getConcept(){
 		//returns the main concepts in the article
 		$response = $this->alchemyapi->concepts('url',$this->link,null);
 		$concepts = $response['concepts'];
-		//print_r($response);
-		//die();
 		$finalConcepts = array();
 		foreach($concepts as $concept)
 		{
-			if($concept['relevance']>0.7)
+			if($concept['relevance']>0.6)
 			{
-				array_push($finalConcepts, array('text'=>$concept['text'],'relevance'=>$concept['relevance']));
+				array_push($finalConcepts, array('text'=>$concept['text'],/*'relevance'=>$concept['relevance']));
 			}
 		}
 		return $finalConcepts;
@@ -67,7 +68,7 @@ class AlchemyApiController {
 	public function getAuthor(){
 		$author = $this->alchemyapi->author('url',$this->link,null);
 		return $author['author'];
-	}
+	}*/
 	public function getTitle(){
 		$title = $this->alchemyapi->text_title('url',$this->link,null);
 		return $title['title'];
