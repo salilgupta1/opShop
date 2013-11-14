@@ -35,6 +35,11 @@ class CongressDB{
 	const F_position					= 'position';
 	//cons of all the fields
 
+	const LIB 							= 85;
+	const MOD 							= 50;
+	const CON 							= 15;
+	// cons of the rating delimiters
+
 	function __construct(){
 		$this->datastore = new DataStore();
 	}
@@ -53,6 +58,52 @@ class CongressDB{
 						   self::F_party.','.
 						   self::F_state.' from '.
 						   self::T_name.' where '.self::F_lName.' in ('.$lastNames.')';
+		return $this->datastore->get($query);
+	}
+
+	public function getCongressMenByRating($rating, $rownum)
+	{
+		$query = 'select '.self::F_fName.','.
+						   self::F_lName.' from '.
+						   self::T_name.' where '.self::F_rating.' ';
+		switch ($rating) {
+			case 0:
+				$query .= '>= '.self::LIB;
+				break;
+			case 1:
+				$query .= '>= '.self::MOD.' and '.self::F_rating.' <= '.self::LIB;
+				break;
+			case 2:
+				$query .= '<= '.self::MOD.' and '.self::F_rating.' >= '.self::CON;
+				break;
+			case 3:
+				$query .= '<= '.self::CON;
+				break;
+		}
+		$query .= ' and '.self::F_special.' = \'Y\' and rownum = '.$rownum;
+
+		return $this->datastore->get($query);
+	}
+
+	public function getCountOfCongressMenByRating($rating);
+	{
+		$query = 'select count(*) from '.self::T_name.' where '.self::F_rating.' ';
+		switch ($rating) {
+			case 0:
+				$query .= '>= '.self::LIB;
+				break;
+			case 1:
+				$query .= '>= '.self::MOD.' and '.self::F_rating.' <= '.self::LIB;
+				break;
+			case 2:
+				$query .= '<= '.self::MOD.' and '.self::F_rating.' >= '.self::CON;
+				break;
+			case 3:
+				$query .= '<= '.self::CON;
+				break;
+		}
+		$query .= ' and '.self::F_special.' = \'Y\'';
+
 		return $this->datastore->get($query);
 	}
 	/*public function getOpposingCongressMen()
