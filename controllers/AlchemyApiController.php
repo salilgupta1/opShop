@@ -14,25 +14,29 @@ class AlchemyApiController {
 		$this->alchemyapi = new AlchemyAPI();
 	}
 
-	//use this function later
-	public function getEntities(){
+	//only shows people that have been quoted in the article
+	public function getEntities($url){
 		//retrieve persons, and quotes associated with that person
-		$response = $this->alchemyapi->entities('url',$this->link,array('quotations'=>1));
+		$response = $this->alchemyapi->entities('url',$url,array('quotations'=>1));
 		$entities = $response['entities'];
+		/*echo '<pre>';
+		print_r($entities);
+		echo '</pre>';*/
 		$persons = array();
 		foreach($entities as $entity)
 		{
-			//do we need the quotations or not? i don't think so but i might be wrong
 			if($entity['type']==='Person')
 			{
 				if(isset($entity['quotations'])){
-					array_push($persons,array('name'=>$entity['text'],'quotations'=>$entity['quotations']));
+					//array_push($person, $entity['text'] => true);
+					$persons[$entity['text']] = $entity['quotations'];
 				}
-				else
-					//array_push($persons,array('name'=>$entity['text']));
-					array_push($persons,$entity['text']);
 			}
 		}
+		/*echo "<pre>";
+		print_r ($persons);
+		echo '</pre>';*/
+		//die();
 		return $persons;
 	}
 
