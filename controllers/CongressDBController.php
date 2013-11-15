@@ -26,9 +26,9 @@ class CongressDBController {
 		return $result;
 	}*/
 
-
+	
 	public function findCongressPeopleInDB(){
-
+/*
 		// Far liberal
 		$f_lib_count = this->congressDB->getCountOfCongressMenByRating(0);
 		$f_lib_rand = rand(0, $f_lib_count-1);
@@ -58,6 +58,6 @@ class CongressDBController {
 		$f_con_last_name = $f_con_q['last_name'];
 
 		return array($f_lib_first_name, $f_lib_last_name, $m_lib_first_name, $m_lib_last_name, $m_con_first_name, $m_con_last_name, $f_con_first_name, $f_con_last_name);
-
+*/
 	}//Alex build your function for choosing people in here. you can change the name
 }
