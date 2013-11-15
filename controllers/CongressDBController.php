@@ -28,14 +28,14 @@ class CongressDBController {
 
 	
 	public function findCongressPeopleInDB(){
-/*
+		/*
 		// Far liberal
 		$f_lib_count = this->congressDB->getCountOfCongressMenByRating(0);
 		$f_lib_rand = rand(0, $f_lib_count-1);
 		$f_lib_q = this->congressDB->getCountOfCongressMenByRating(0, $f_lib_rand);
 		$f_lib_first_name = $f_lib_q['first_name'];
 		$f_lib_last_name = $f_lib_q['last_name'];
-
+		
 		// Moderate liberal
 		$m_lib_count = this->congressDB->getCountOfCongressMenByRating(1);
 		$m_lib_rand = rand(0, $m_lib_count-1);
