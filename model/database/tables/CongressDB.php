@@ -63,26 +63,27 @@ class CongressDB{
 	
 	public function getCongressMenByRating($rating, $rownum)
 	{
-		$query = 'select '.self::F_fName.','.
+		$query = 'select '.self::F_fName.', '.
 						   self::F_lName.' from '.
 						   self::T_name.' where '.self::F_rating.' ';
 		switch ($rating) {
 			case 0:
-				$query .= '>= '.self::LIB;
+				$query .= '> '.self::LIB;
 				break;
 			case 1:
 				$query .= '>= '.self::MOD.' and '.self::F_rating.' <= '.self::LIB;
 				break;
 			case 2:
-				$query .= '<= '.self::MOD.' and '.self::F_rating.' >= '.self::CON;
+				$query .= '< '.self::MOD.' and '.self::F_rating.' >= '.self::CON;
 				break;
 			case 3:
-				$query .= '<= '.self::CON;
+				$query .= '< '.self::CON;
 				break;
 		}
-		$query .= ' and '.self::F_special.' = \'Y\' and rownum = '.$rownum;
-
-		return $this->datastore->get($query);
+		$query .= ' and '.self::F_special.' = \'Y\' limit '.$rownum.',1;';
+		//if ($rating == 1) print $query;
+		$test = $this->datastore->get($query);
+		return $test;
 	}
 
 	public function getCountOfCongressMenByRating($rating)

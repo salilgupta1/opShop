@@ -25,10 +25,10 @@ require_once('controllers/CongressDBController.php');
 function concat($str){
 	return end(explode(" ",$str));
 }
-//$articleLink = isset($_GET['link'])? $_GET['link']:"http://www.deseretnews.com/article/865589797/Mitt-Romney-goes-after-tea-party-Obamas-fundamental-dishonesty-about-Obamacare.html";//die('error');
+$articleLink = isset($_GET['link'])? $_GET['link']:"http://www.nytimes.com/2013/11/22/us/politics/reid-sets-in-motion-steps-to-limit-use-of-filibuster.html?hp&_r=0";//die('error');
 
 //IMPORTANT!!!!!!!!!!!
-$articleLink = "";//when you wanna test different articles copy and past between the quotes
+//$articleLink = "";//when you wanna test different articles copy and past between the quotes
 
 $alchemyController = new AlchemyApiController($articleLink);
 $congressDBController = new CongressDBController();
@@ -36,14 +36,16 @@ $bingSearchController = new BingSearchController();
 
 $title = $alchemyController->getTitle();
 $keyWords = $alchemyController->getKeyWords();
+print_r($keyWords);
 
 /******
 variable people is an array that will come from the congressDBController
 some sort of function call too our database for the people that we want
 *******/
 
-$people = array('Barack Obama','John Boehner','Mitt Romney');
-
+$people = $congressDBController->findCongressPeopleInDB();
+print_r($people);
+//die();
 $peopleConcat = array_map("concat",$people);
 echo 'THIS IS THE ARRAY OF PEOPLE THAT WERE SELECTED FROM THE DATABASE';
 echo '<pre>';
@@ -54,19 +56,39 @@ echo '</pre>';
 variable query will have to come from the congressDBController
 some sort of function call
 *******/
-$query = 'President Obama, Mitt Romney, John Boehner and healthcare';
-$response = $bingSearchController->queryBing($query);
-$articleUrls = $bingSearchController->getArticleUrls($response);
+$query_f_lib = '\"'.$people[0].'\" + ';//.$keywords[0]["text"].' + \"'.$keywords[1]["text"].'\"';
+$query_f_mod = '\"'.$people[1].'\" + ';//.$keywords[0]["text"].' + \"'.$keywords[1]["text"].'\"';
+$query_m_con = '\"'.$people[2].'\" + ';//.$keywords[0]["text"].' + \"'.$keywords[1]["text"].'\"';
+$query_f_con = '\"'.$people[3].'\" + ';//.$keywords[0]["text"].' + \"'.$keywords[1]["text"].'\"';
+
+foreach($keyWords as $kw) {
+	$query_f_lib .= $kw["text"].' + ';
+	$query_m_lib .= $kw["text"].' + ';
+	$query_m_con .= $kw["text"].' + ';
+	$query_f_con .= $kw["text"].' + ';
+}
+
+//$query = '\"Murkowski\" + Nations climate talks';
+$response_f_lib = $bingSearchController->queryBing($query_f_lib);
+$response_m_lib = $bingSearchController->queryBing($query_m_lib);
+$response_m_con = $bingSearchController->queryBing($query_m_con);
+$response_f_con = $bingSearchController->queryBing($query_f_con);
+
+
+$articleUrls_f_lib = $bingSearchController->getArticleUrls($response_f_lib);
+$articleUrls_m_lib = $bingSearchController->getArticleUrls($response_m_lib);
+$articleUrls_m_con = $bingSearchController->getArticleUrls($response_m_con);
+$articleUrls_f_con = $bingSearchController->getArticleUrls($response_f_con);
 
 ECHO 'THIS IS THE NUMBER OF ARTICLES FROM BING AND THEIR URLS';
-print_r(count($articleUrls). " urls to check");
+print_r(count($articleUrls_f_lib). " urls to check");
 echo '<pre>';
-print_r($articleUrls);
+print_r($articleUrls_f_lib);
 echo '</pre>';
 
 $validUrls = array();
 
-foreach($articleUrls as $url){
+foreach($articleUrls_f_lib as $url){
 
 	$persons = $alchemyController->getEntities($url);
 	ECHO ' THIS IS THE LIST OF THE PEOPLE QUOTED IN THIS ARTICLE';
