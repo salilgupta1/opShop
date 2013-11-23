@@ -60,11 +60,14 @@ class CongressDB{
 						   self::T_name.' where '.self::F_lName.' in ('.$lastNames.')';
 		return $this->datastore->get($query);
 	}
-	
+
 	public function getCongressMenByRating($rating, $rownum)
 	{
 		$query = 'select '.self::F_fName.', '.
-						   self::F_lName.' from '.
+						   self::F_lName.', '.
+						   self::F_state.', '.
+						   self::F_party.', '.
+						   self::F_position.' from '.
 						   self::T_name.' where '.self::F_rating.' ';
 		switch ($rating) {
 			case 0:
