@@ -22,73 +22,74 @@ error_reporting(E_ALL);
   });
 	</script>
 
-	<link type = 'text/css' rel = 'stylesheet' href = '/views/css/bootstrap.min.css'/>
-	<link type = 'text/css' rel = 'stylesheet' href = '/views/css/bootstrap-theme.min.css'/>
-	<style>
-		body {
-		  padding-top: 50px;
-		}
-		.starter-template {
-		  padding: 40px 15px;
-		  text-align: center;
-		}
-	</style>
+  <link type = 'text/css' rel = 'stylesheet' href = '/views/css/bootstrap.css'/>
+  <link type = 'text/css' rel = 'stylesheet' href = '/views/css/bootstrap-theme.min.css'/>
+    <link type = 'text/css' rel = 'stylesheet' href = '/views/css/opShop.css'/>
 </head>
   <body>
 
-    <!--div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">OpShop</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      <!--/div>
-    </div-->
+
 
     <div class="container">
+          <nav role="navigation">
+        <ul class="nav nav-pills">
+          <li class="active"><a href="index.php">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li ><a href="team.html">Team</a></li>
+          <!--li><a href = 'contact.html'>Contact Us</a></li-->
+        </ul>
+      </nav>
       <div class="starter-template">
         <img src = '/assets/opShopLogo.jpg' width="300" height="200"/>
         <form>
         	<div class = 'form-group'>
         		<input type="url" class="form-control" id ='articleLink' placeholder="URL">
         	</div>
-        	<button type="submit" id = 'submit' class="btn btn-default">Submit</button>
+        	<button type="submit" id = 'submit' class="btn btn-default">OpShop it!</button>
         </form>
 
         <div style = 'display:none' id="loader"><img src="/assets/loading.gif" /></div>
 
-        <div style = 'display:none' class = 'basic-info'>
-
-          <div class = 'title'>
-            <h2>Title</h2>
-            <div></div>
+        <div id = 'failure' style = 'display:none'>
+          <h2>Sorry, OpShop wasn't able to process your request :(</h2>
+        </div>
+        <div id = 'congyQuotes' >
+          <div id = 'spectrum'>
+            <img src = "/assets/scale.jpg" />
           </div>
-          <!--div class = 'author'>
-            <h2>Author</h2>
-            <div></div>
-          </div-->
-          <div class = 'keywords'>
-            <h2>Keywords</h2>
-            <div></div>
+          <div id = 'quoteCards'>
+            <div id = 'row'>
+              <div class="col-sm-6 col-md-3">
+                <div class = 'thumbnail'>
+                  <div class = 'name'>
+                    <h3></h3>
+                  </div>
+                  <div class = 'position'>
+                    <h4></h4>
+                  </div>
+                  <div class = 'quotation'>
+                    <p></p>
+                  </div>
+                  <a href = '#'>Read Full Text Here</a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class = 'thumbnail'>
+                  <a href = '#'>Read Full Text Here</a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class = 'thumbnail'>
+                  <a href = '#'>Read Full Text Here</a>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class = 'thumbnail'>
+                  <a href = '#'>Read Full Text Here</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <!--div class = 'concepts'>
-            <h2>Concepts</h2>
-            <div></div>
-          </div>
-          <div class = 'entities'>
-            <h2>People</h2>
-            <div></div>
-          </div-->
         </div>
       </div>
     </div><!-- /.container -->
