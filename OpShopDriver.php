@@ -1,23 +1,6 @@
 <?php
-/*
-Hey guys read this top part so you can get an idea of what is going on in the code.
-So this code should work from start to end. Basically it takes an article, it finds its title keywords.
-I have created a test array $people with congressmen/women that we would select from the database.
-I also created a test query $query. That should change when alex inputs his function that builds the query.
-
-Then I run the query on Bing and get a list of article urls to go through
-I use alchemy to go through them and pull only the people that have quotes.
-
-i then go through the list of people for each article url and search for a match in our list of people
-
-Then I print it out.
-
-This should be a good environment to test in before we start returning to the home page.
-I'll be gone Sunday through tuesday. So use this platform to test how our querys are and the people we are select from the database
-*/
 ini_set('display_errors',1);
 error_reporting(E_ALL);
-
 require_once('controllers/BingSearchController.php');
 require_once('controllers/AlchemyApiController.php');
 require_once('controllers/CongressDBController.php');
@@ -27,8 +10,6 @@ function concat($str){
 }
 $articleLink = isset($_GET['link'])? $_GET['link']:"http://www.latimes.com/nation/politics/politicsnow/la-pn-obamacare-signup-deadline-extended-20131122,0,2819793.story#axzz2lPRjntUO";//die('error');
 
-//IMPORTANT!!!!!!!!!!!
-//$articleLink = "";//when you wanna test different articles copy and past between the quotes
 
 $alchemyController = new AlchemyApiController($articleLink);
 $congressDBController = new CongressDBController();
@@ -130,6 +111,7 @@ $validUrls = array();
 print_r($articleUrls_f_lib);
 echo '</pre>';*/
 //echo 'theses are the far libs';
+
 foreach($articleUrls_f_lib as $url){
 
 	$persons = $alchemyController->getEntities($url);
@@ -149,7 +131,7 @@ foreach($articleUrls_f_lib as $url){
 		$result = strpos($keys[$i],$peopleConcat[0]);
 		if($result!==false && !isset($validUrls[$people[0]]))
 		{
-			$validUrls[$people[0]]= array('url'=>$url,'state'=>$people[1],'party'=>$people[2],'pos'=>$people[3],'quote'=>$persons[$keys[$i]][0]);
+			$validUrls['f_lib']= array('name'=>$people[0], 'url'=>$url,'state'=>$people[1],'party'=>$people[2],'pos'=>$people[3],'quote'=>$persons[$keys[$i]][0]);
 
 		}
 	}
@@ -178,7 +160,7 @@ foreach($articleUrls_m_lib as $url){
 		$result = strpos($keys[$i],$peopleConcat[1]);
 		if($result!==false && !isset($validUrls[$people[4]]))
 		{
-			$validUrls[$people[4]]= array('url'=>$url,'state'=>$people[5],'party'=>$people[6],'pos'=>$people[7],'quote'=>$persons[$keys[$i]][0]);
+			$validUrls['m_lib']= array('name'=>$people[4],'url'=>$url,'state'=>$people[5],'party'=>$people[6],'pos'=>$people[7],'quote'=>$persons[$keys[$i]][0]);
 
 		}
 	}
@@ -205,7 +187,7 @@ foreach($articleUrls_m_con as $url){
 		$result = strpos($keys[$i],$peopleConcat[2]);
 		if($result!==false && !isset($validUrls[$people[8]]))
 		{
-			$validUrls[$people[8]]= array('url'=>$url,'state'=>$people[9],'party'=>$people[10],'pos'=>$people[11],'quote'=>$persons[$keys[$i]][0]);
+			$validUrls['m_con']= array('name'=>$people[8],'url'=>$url,'state'=>$people[9],'party'=>$people[10],'pos'=>$people[11],'quote'=>$persons[$keys[$i]][0]);
 
 		}
 	}
@@ -231,7 +213,7 @@ foreach($articleUrls_f_con as $url){
 		$result = strpos($keys[$i],$peopleConcat[3]);
 		if($result!==false && !isset($validUrls[$people[12]]))
 		{
-			$validUrls[$people[12]]= array('url'=>$url,'state'=>$people[13],'party'=>$people[14],'pos'=>$people[15],'quote'=>$persons[$keys[$i]][0]);
+			$validUrls['f_con']= array('name'=>$people[12],'url'=>$url,'state'=>$people[13],'party'=>$people[14],'pos'=>$people[15],'quote'=>$persons[$keys[$i]][0]);
 
 		}
 	}
@@ -243,6 +225,4 @@ foreach($articleUrls_f_con as $url){
 echo '<pre>';
 print_r($validUrls);
 echo '</pre>';*/
-if(count($validUrls)===0)
-	echo  'oh fuck';
 echo json_encode($validUrls);
