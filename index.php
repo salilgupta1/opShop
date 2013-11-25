@@ -36,7 +36,6 @@ error_reporting(E_ALL);
           <li class="active"><a href="index.php">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li ><a href="team.html">Team</a></li>
-          <!--li><a href = 'contact.html'>Contact Us</a></li-->
         </ul>
       </nav>
       <div class="starter-template">
@@ -50,48 +49,82 @@ error_reporting(E_ALL);
 
         <div style = 'display:none' id="loader"><img src="/assets/loading.gif" /></div>
 
-        <div id = 'failure' style = 'display:none'>
+        <div id = 'fail' style = 'display:none'>
           <h2>Sorry, OpShop wasn't able to process your request :(</h2>
         </div>
-        <div id = 'congyQuotes' >
+        <div id = 'congyQuotes' style = 'display:none'>
           <div id = 'spectrum'>
             <img src = "/assets/scale.jpg" />
           </div>
           <div id = 'quoteCards'>
             <div id = 'row'>
               <div class="col-sm-6 col-md-3">
-                <div class = 'thumbnail'>
+                <div class = 'thumbnail' data-type = 'f_lib'>
                   <div class = 'name'>
-                    <h3></h3>
+                    <h3>N/A</h3>
                   </div>
                   <div class = 'position'>
-                    <h4></h4>
+                    <h4>N/A</h4>
                   </div>
                   <div class = 'quotation'>
-                    <p></p>
+                    <p>N/A</p>
                   </div>
-                  <a href = '#'>Read Full Text Here</a>
+                  <a href = '#' target = '_blank'> Read Full Text Here </a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3">
-                <div class = 'thumbnail'>
-                  <a href = '#'>Read Full Text Here</a>
+                <div class = 'thumbnail' data-type = 'm_lib'>
+                  <div class = 'name'>
+                    <h3>N/A</h3>
+                  </div>
+                  <div class = 'position'>
+                    <h4>N/A</h4>
+                  </div>
+                  <div class = 'quotation'>
+                    <p>N/A</p>
+                  </div>
+                  <a href = '#' target = '_blank'>Read Full Text Here</a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3">
-                <div class = 'thumbnail'>
-                  <a href = '#'>Read Full Text Here</a>
+                <div class = 'thumbnail' data-type = 'm_con'>
+                  <div class = 'name'>
+                    <h3>N/A</h3>
+                  </div>
+                  <div class = 'position'>
+                    <h4>N/A</h4>
+                  </div>
+                  <div class = 'quotation'>
+                    <p>N/A</p>
+                  </div>
+                  <a href = '#' target = '_blank'>Read Full Text Here</a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3">
-                <div class = 'thumbnail'>
-                  <a href = '#'>Read Full Text Here</a>
+                <div class = 'thumbnail' data-type = 'f_con'>
+                  <div class = 'name'>
+                    <h3>N/A</h3>
+                  </div>
+                  <div class = 'position'>
+                    <h4>N/A</h4>
+                  </div>
+                  <div class = 'quotation'>
+                    <p>N/A</p>
+                  </div>
+                  <a href = '#' target = '_blank'>Read Full Text Here</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div id = 'footer'>
+
+        </div>
+
       </div>
+
+
+
     </div><!-- /.container -->
 
   </body>
