@@ -50,9 +50,15 @@ var OpShop = (function($){
 				}
 				var party = data[type]['party'];
 				var state = data[type]['state'];
-				var quote = data[type]['quote']['quotation'];
+				var quote;
+				if(data[type]['quote']==='none'){
+					quote = 'none';
+				}
+				else{
+					quote = data[type]['quote']['quotation'];
+				}
 				$(this).children('.name').children('h3').text(name);
-				$(this).children('.position').children('h4').text(pos+ "("+party+" - "+state+")");
+				$(this).children('.position').children('h4').text(pos+ " ("+party+" - "+state+")");
 				$(this).children('.quotation').children('p').text(quote);
 				$(this).children('a').attr('href',url);
 			}
