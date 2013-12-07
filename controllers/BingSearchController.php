@@ -39,14 +39,11 @@ class BingSearchController {
 
 	public function getArticleUrls($response){
 		$jsonObj = json_decode($response,true);
-		//print_r($jsonObj);
 		$urls = array();
 		foreach($jsonObj['d']['results'] as $value)
 		{
-			//print_r($value);
 			array_push($urls,$value['Url']);
 		}
-		//print_r($urls);
 		return $urls;
 	}
 

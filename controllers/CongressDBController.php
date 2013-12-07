@@ -18,20 +18,6 @@ class CongressDBController {
 		$this->congressDB = new CongressDB();
 	}
 
-	/*public function processNames($nameSet)
-	{
-		$lastNames = array();
-		foreach($nameSet as $name)
-		{
-			$lastName = end(explode(" ",$name));
-			array_push($lastNames,$lastName);
-		}
-		$inQuery = "'".implode("','",$lastNames)."'";
-		$result= $$this->congressDB->getCongressMenByLastNames($inQuery);
-		return $result;
-	}*/
-
-
 	public function findCongressPeopleInDB(){
 
 		// Far liberal
@@ -72,5 +58,5 @@ class CongressDBController {
 
 		return array($f_lib_first_name." ".$f_lib_last_name, $f_lib_state, $f_lib_party, $f_lib_pos, $m_lib_first_name." ".$m_lib_last_name, $m_lib_state, $m_lib_party, $m_lib_pos, $m_con_first_name." ".$m_con_last_name, $m_con_state, $m_con_party, $m_con_pos, $f_con_first_name." ".$f_con_last_name, $f_con_state, $f_con_party, $f_con_pos);
 
-	}//Alex build your function for choosing people in here. you can change the name
+	}
 }

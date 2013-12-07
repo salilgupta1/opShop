@@ -19,24 +19,16 @@ class AlchemyApiController {
 		//retrieve persons, and quotes associated with that person
 		$response = $this->alchemyapi->entities('url',$url,array('quotations'=>1));
 		$entities = $response['entities'];
-		/*echo '<pre>';
-		print_r($entities);
-		echo '</pre>';*/
 		$persons = array();
 		foreach($entities as $entity)
 		{
 			if($entity['type']==='Person')
 			{
 				if(isset($entity['quotations'])){
-					//array_push($person, $entity['text'] => true);
 					$persons[$entity['text']] = $entity['quotations'];
 				}
 			}
 		}
-		/*echo "<pre>";
-		print_r ($persons);
-		echo '</pre>';*/
-		//die();
 		return $persons;
 	}
 
@@ -45,7 +37,6 @@ class AlchemyApiController {
 		$response = $this->alchemyapi->keywords('url',$this->link,null);
 		$keywords = $response['keywords'];
 		$finalKeyWords = array();
-		// so which keywords do we want... i think it should be the ones that are bigger than .9 or something in relevancez
 		foreach($keywords as $keyword)
 		{
 			if($keyword['relevance']>=0.88)
@@ -55,26 +46,8 @@ class AlchemyApiController {
 		}
 		return $finalKeyWords;
 	}
-/*	public function getConcept(){
-		//returns the main concepts in the article
-		$response = $this->alchemyapi->concepts('url',$this->link,null);
-		$concepts = $response['concepts'];
-		$finalConcepts = array();
-		foreach($concepts as $concept)
-		{
-			if($concept['relevance']>0.6)
-			{
-				array_push($finalConcepts, array('text'=>$concept['text'],/*'relevance'=>$concept['relevance']));
-			}
-		}
-		return $finalConcepts;
-	}
-	public function getAuthor(){
-		$author = $this->alchemyapi->author('url',$this->link,null);
-		return $author['author'];
-	}*/
-	public function getTitle(){
-		$title = $this->alchemyapi->text_title('url',$this->link,null);
+	public function getTitle($url){
+		$title = $this->alchemyapi->text_title('url',$url,null);
 		return $title['title'];
 	}
 }
