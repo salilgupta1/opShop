@@ -12,8 +12,6 @@ var OpShop = (function($){
 				$('#congyQuotes').fadeIn('slow');
 			else
 				$('#fail').fadeIn('slow');
-			//$('.basic-info').fadeIn('slow');
-			//traverse(data);*/
 		});
 	},
 	init = function()
@@ -50,6 +48,7 @@ var OpShop = (function($){
 				}
 				var party = data[type]['party'];
 				var state = data[type]['state'];
+				var title = data[type]['title'];
 				var quote;
 				if(data[type]['quote']==='none'){
 					quote = 'none';
@@ -61,42 +60,10 @@ var OpShop = (function($){
 				$(this).children('.position').children('h4').text(pos+ " ("+party+" - "+state+")");
 				$(this).children('.quotation').children('p').text(quote);
 				$(this).children('a').attr('href',url);
+				$(this).children('a').text(title);
 			}
 		});
 		return true;
-	},
-	traverse = function(data)
-	{
-		for(var el in data)
-		{
-			if(el === 'title')
-			{
-				$('.'+el+'>div').empty();
-				$('.'+el+ '>div').append(data[el]==''?'Not Identified':data[el]);
-			}
-/*			else if (el === 'author')
-			{
-				$('.'+el+'>div').empty();
-				$('.'+el+ '>div').append(data[el]==''?'Not Identified':data[el]);
-			}*/
-			else
-			{
-				var array = recurTraverse(data[el],[]);
-				$('.'+el+'>div').empty();
-				$('.'+el+'> div').append(array.join('<br>'));
-			}
-		}
-	},
-	recurTraverse = function(element,arr)
-	{
-		for(var el in element)
-		{
-			if(typeof element[el] === 'object')
-				recurTraverse(element[el],arr);
-			else
-				arr.push("<span>"+element[el]+"</span>");
-		}
-		return arr;
 	};
 	return {
 		//public functions
