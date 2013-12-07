@@ -1,7 +1,6 @@
 <?php
 ini_set('display_errors',1);
 error_reporting(E_ALL);
-//require_once($_SERVER['DOCUMENT_ROOT'].'/model/database/tables/CongressDB.php');
 ?>
 <!DOCTYPE HTML>
 <html lang='en'>
@@ -69,7 +68,8 @@ error_reporting(E_ALL);
                   <div class = 'quotation'>
                     <p>N/A</p>
                   </div>
-                  <a href = '#' target = '_blank'> Read Full Text Here </a>
+
+                  <a href = '#' target = '_blank'> </a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3">
@@ -83,7 +83,8 @@ error_reporting(E_ALL);
                   <div class = 'quotation'>
                     <p>N/A</p>
                   </div>
-                  <a href = '#' target = '_blank'>Read Full Text Here</a>
+
+                  <a href = '#' target = '_blank'></a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3">
@@ -97,7 +98,8 @@ error_reporting(E_ALL);
                   <div class = 'quotation'>
                     <p>N/A</p>
                   </div>
-                  <a href = '#' target = '_blank'>Read Full Text Here</a>
+
+                  <a href = '#' target = '_blank'></a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-3">
@@ -111,21 +113,18 @@ error_reporting(E_ALL);
                   <div class = 'quotation'>
                     <p>N/A</p>
                   </div>
-                  <a href = '#' target = '_blank'>Read Full Text Here</a>
+
+                  <a href = '#' target = '_blank'></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div id = 'footer'>
-
-        </div>
-
       </div>
-
-
-
+      <div class = 'push'></div>
     </div><!-- /.container -->
+     <div class = 'footer'>
 
+     </div>
   </body>
 </html>
