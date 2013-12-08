@@ -1,3 +1,7 @@
+/*
+Javascript class that holds all the javascript functionality
+follows module object pattern. Encapsulates all functions within the OpShop object to protect from other parts of application impacting it
+*/
 var OpShop = (function($){
 
 	var analyzeArticle = function(link)

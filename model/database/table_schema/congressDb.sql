@@ -1,3 +1,6 @@
+/*
+Sql query that builds congress_db table. Run to set up your initial table
+*/
 CREATE TABLE `congress_db` (
   `pid` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) NOT NULL,

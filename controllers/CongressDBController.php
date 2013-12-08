@@ -1,4 +1,10 @@
 <?php
+/*
+Controller that manages our Congress Database and talks directly with model CongressDB
+1 function: findCongressPeopleInDB pulls 4 random congressional members 1 from each region of the political spectrum
+
+Future development would require a thorough overhall of this for a more enhanced selection algorithm of congressional members based on various factors
+*/
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 

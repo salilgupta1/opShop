@@ -1,4 +1,10 @@
 <?php
+/*
+Controller that manages alchemy api
+Has 3 functions : getEntities to do quote extraction; getKeyWords to do keyword Extraction ; getTitle to retrieve title of article
+
+Further development would require better keyword extraction and entity extraction for more relevant quotes and keywords
+*/
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 

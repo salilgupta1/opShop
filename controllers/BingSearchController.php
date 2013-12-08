@@ -1,4 +1,10 @@
 <?php
+/*
+Controller that manages Bing News search.
+2 functions : queryBing runs the query through bing news search and returns the response; getArticleUrls goes through the response and gets only the article urls
+
+Future Development would require maybe google news search or larger request limit
+*/
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 class BingSearchController {

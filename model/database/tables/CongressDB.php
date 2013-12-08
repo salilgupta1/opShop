@@ -1,4 +1,9 @@
 <?php
+/*
+Model for the opShopDev database. Holds all sql queries that will be run on the database using MySql.php
+
+Further Development: Refine queries to be faster. Create another database for caching purposes. Expand database with more tables to hold more dimensions
+*/
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 /*

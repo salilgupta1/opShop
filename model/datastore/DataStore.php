@@ -1,4 +1,7 @@
 <?php
+/*
+Another class built on top of MySql for abstraction purposes.
+*/
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 require_once('MySql/MySql.php');
